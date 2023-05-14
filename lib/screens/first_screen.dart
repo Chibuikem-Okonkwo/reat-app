@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:reatapp/screens/loading_screen.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -9,13 +10,13 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
     changeRoute();
   }
 
-  changeRoute() async {
-    await Future.delayed(Duration(seconds: 2), () {
+  void changeRoute() {
+    Future.delayed(Duration(seconds: 2)).then((value){
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => LoadingScreen()),
@@ -26,11 +27,13 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [Image.asset('images/reat.png')],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Image.asset('images/reat.png'),
+          SizedBox(height: 200,)
+        ],
       ),
     );
   }
