@@ -14,6 +14,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('images/reat.png'),
             SpinKitDoubleBounce(

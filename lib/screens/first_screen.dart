@@ -7,17 +7,20 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
+
   @override
-  void initState() {
+  void initState() async {
     super.initState();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return LoadingScreen();
-        },
-      ),
-    );
+    changeRoute();
+  }
+
+  changeRoute() async {
+    await Future.delayed(Duration(seconds: 2), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoadingScreen()),
+      );
+    });
   }
 
   @override
