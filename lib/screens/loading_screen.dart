@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import 'onboarding_screen.dart';
+
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    changeRoute();
+  }
+
+  void changeRoute() {
+    Future.delayed(Duration(seconds: 2)).then((value) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => OnboardingScreen()),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,4 +43,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
       ),
     );
   }
+}
+
 }
