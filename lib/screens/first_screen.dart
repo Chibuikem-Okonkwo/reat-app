@@ -29,8 +29,9 @@ class _FirstScreenState extends State<FirstScreen> {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(height: 200),
           Image.asset('images/reat.png'),
           SizedBox(height: 200,)
         ],
