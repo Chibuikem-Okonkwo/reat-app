@@ -14,18 +14,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<Widget> _pages = [
     OnboardingPage(
       image: 'images/screen1.png',
-      title: 'Welcome to Onboarding App',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      title: 'Get Your Reservations Easily and Efficiently',
+      description: 'Browse time convenient for you and keep a spot',
     ),
     OnboardingPage(
       image: 'images/screen2.png',
-      title: 'Discover New Features',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      title: 'Luxury And Sweet Bliss All In One Spot',
+      description: 'Reat offers you top notch experience of comfort',
     ),
     OnboardingPage(
       image: 'images/screen3.png',
-      title: 'Get Started',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      title: 'Create An Account And Join The Life Of Luxury',
+      description: 'Get beautiful spaces for dinners, events and hangouts at ease',
     ),
   ];
 
