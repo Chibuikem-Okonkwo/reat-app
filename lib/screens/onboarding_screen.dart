@@ -53,28 +53,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: _buildPageIndicator(),
             ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                if (_currentPage == _pages.length - 1) {
-                  // Handle "Get Started" button tap
-                  // For example, navigate to the home screen
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                } else {
-                  _pageController.nextPage(
-                    duration: Duration(milliseconds: 500),
-                    curve: Curves.ease,
-                  );
-                }
-              },
-              child: Text(
-                _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
+            SizedBox(height: 20.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(50),
+                ),
+                onPressed: () {
+                  if (_currentPage == _pages.length - 1) {
+                    // Handle "Get Started" button tap
+                    // For example, navigate to the home screen
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  } else {
+                    _pageController.nextPage(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  }
+                },
+                child: Text(
+                  _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
+                ),
               ),
             ),
-            SizedBox(height: 32.0),
+            SizedBox(height: 20.0),
+            TextButton(
+              onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
+              child: Text('Skip', style: TextStyle(color: Colors.white),),
+            ),
           ],
         ),
       ),
@@ -133,16 +146,21 @@ class OnboardingPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 16.0),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 16.0,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Text(
+              description,
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
         ],
       ),

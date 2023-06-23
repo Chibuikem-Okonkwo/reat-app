@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'splash_screen.dart';
 import 'onboarding_screen.dart';
 
-class FirstScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  _FirstScreenState createState() => _FirstScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _FirstScreenState extends State<FirstScreen> {
+class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
@@ -17,9 +16,12 @@ class _FirstScreenState extends State<FirstScreen> {
     changeRoute();
   }
 
-  void changeRoute() async{
+  void changeRoute() {
     Future.delayed(Duration(seconds: 2)).then((value) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreen()),);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => OnboardingScreen()),
+      );
     });
   }
 
@@ -32,7 +34,11 @@ class _FirstScreenState extends State<FirstScreen> {
         children: [
           SizedBox(height: 200),
           Image.asset('images/reat.png'),
-          SizedBox(height: 200),
+          SizedBox(height: 150),
+          SpinKitRing(
+            color: Colors.white,
+            size: 50.0,
+          ),
         ],
       ),
     );

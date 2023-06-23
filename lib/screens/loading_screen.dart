@@ -1,46 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 
-import 'onboarding_screen.dart';
-
-class LoadingScreen extends StatefulWidget {
-  @override
-  _LoadingScreenState createState() => _LoadingScreenState();
-}
-
-class _LoadingScreenState extends State<LoadingScreen> {
-
-  @override
-  void initState() {
-    super.initState();
-    changeRoute();
-  }
-
-  void changeRoute() {
-    Future.delayed(Duration(seconds: 2)).then((value) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => OnboardingScreen()),
-      );
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(height: 200),
-          Image.asset('images/reat.png'),
-          SizedBox(height: 150),
-          SpinKitRing(
-            color: Colors.white,
-            size: 50.0,
+buildCustomModalWrapper(BuildContext context, {Widget? widget}) async {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  if (!Get.isDialogOpen!) {
+    return Get.dialog(
+      WillPopScope(
+        onWillPop: () => Future<bool>.value(false),
+        child: Material(
+          elevation: 0.0,
+          child: Container(
+            color: Color(0XFF1F2937),
+            child: widget ??
+                GestureDetector(
+                  onTap: Get.back,
+                  child: const Text('Dialog'),
+                ),
           ),
-        ],
+        ),
       ),
+      useSafeArea: false,
+      barrierDismissible: false,
+      barrierColor: Color(0XFF1F2937),
+      transitionCurve: Curves.easeInOutBack,
+// transitionDuration: ,
+      navigatorKey: navigatorKey,
+      routeSettings: const RouteSettings(name: '/loader-modal'),
     );
   }
+}
+
+showLoaderWidget(BuildContext context, {String? message}) {
+  buildCustomModalWrapper(
+    context,
+    widget: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(
+          'images/reat.png',
+        ),
+        const SizedBox(height: 17),
+        Semantics(
+          child: Text(
+            message ?? 'Processing...',
+            semanticsLabel: message ?? 'Processing...',
+            textAlign: TextAlign.center,
+          ),
+        )
+      ],
+    ),
+  );
 }
